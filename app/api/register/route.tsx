@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcrypt'
 import prisma from '@/app/lib/prisma'
+// import { signIn } from 'next-auth/react'
+
 
 export async function POST(req: NextRequest) {
   try {
@@ -25,6 +27,12 @@ export async function POST(req: NextRequest) {
         password: hashedPassword,
       },
     })
+    // After successfully creating the user,i well sign them in using NextAuth.js
+    // await signIn('credentials', {
+    //   username: email, // Use the email as the username for credentials-based authentication
+    //   password, // Use the provided password
+    //   callbackUrl: '/dashboard', // Redirect URL after successful sign-in
+    // })
     return NextResponse.json(
       { message: 'user created', data: user },
       { status: 201 },

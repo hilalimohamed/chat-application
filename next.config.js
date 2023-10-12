@@ -1,4 +1,32 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-
+const nextConfig = {
+  webpack: (config) => {
+    config.externals = [...config.externals, 'bcrypt']
+    config.externals.push('bcrypt')
+    return config
+  },
+  experimental: {
+    serverComponentsExternalPackages: ['bcrypt'],
+    serverComponents: true,
+  },
+}
 module.exports = nextConfig
+
+//   serverComponentsExternalPackages: ['bcrypt'],
+// module.exports = {
+//   reactStrictMode: true, // Enable React Strict Mode
+//   images: {
+//     // domains: ['example.com'], // Allow specific domains for images
+//   },
+//   // ...other configuration options
+// };
+
+// const withTM = require('next-transpile-modules')(['bcrypt'])
+
+// module.exports = withTM({
+//     webpack: (config) => {
+//         // Exclude bcrypt from the bundle using webpack-node-externals
+//         config.externals.push('bcrypt')
+//     return config
+//   },
+// })

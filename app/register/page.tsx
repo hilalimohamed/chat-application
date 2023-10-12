@@ -3,11 +3,15 @@ import Image from 'next/image'
 import img from '@/public/images/groupeChat.jpg'
 import img1 from '@/public/images/groupeChatIMG.jpg'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { z, ZodError } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import toast from 'react-hot-toast'
+import { useRouter } from 'next/navigation' 
+import { useSession } from 'next-auth/react'
+
 
 interface FormData {
   username: string
@@ -37,38 +41,22 @@ const schema = z
   })
   .refine((value) => value.password === value.confirmpassword, {
     message: 'Passwords do not match',
-    path: ['confirmPassword'],
+    path: ['confirmpassword'],
   })
-  .optional()
 
 export default function page() {
-  // const [values, setvalues] = useState({
-  //   username: '',
-  //   email: '',
-  //   password: '',
-  //   error: '',
-  //   // confirmPassword: '',
+  const { data: session } = useSession()
+  const router = useRouter()
+  const [loading, setLoading] = useState('Register')
 
-  // })
-  // const handelChange = (e: any) => {
-  //   const name = e.target.name
-  //   setvalues({ ...values, [name]: e.target.value })
-  // }
 
-  // const handeSubmit = async (e: any) => {
-  //   e.preventDefault()
-  //   try {
-  //     const response = await axios.post('/api/register', {
-  //       name: values.username,
-  //       email: values.email,
-  //       password: values.password,
-  //     })
-  //     // console.log(response.data.message)
-  //   } catch (error: any) {
-  //     console.log('signup failed  ', error.response.data.message)
-  //     setvalues({ ...values, error: error.response.data.message })
-  //   }
-  // }
+    useEffect(() => {
+      // Check if the user is authenticated
+      if (session?.user) {
+        // Redirect to the desired path for authenticated users
+        router.push('/users')
+      }
+    }, [session, router])
 
   const {
     register,
@@ -79,9 +67,6 @@ export default function page() {
     resolver: zodResolver(schema),
   })
 
-  // const onSubmit = (data: FormData) => {
-  //   console.log(data)
-  // }
   const onSubmit = async (data: FormData) => {
     try {
       // Validate the form data against the Zod schema
@@ -89,18 +74,38 @@ export default function page() {
 
       // If validation succeeds, you can proceed with submitting the data
       console.log('Valid form data:', validatedData)
+      setLoading('loading...')
       // Call your API to submit the data here
-      const response = await axios.post('/api/register', {
-        name: data.username,
-        email: data.email,
-        password: data.password,
-      })
-      console.log(response.data)
-    } catch (error) {
+      const response = await axios
+        .post('/api/register', {
+          name: data.username,
+          email: data.email,
+          password: data.password,
+        })
+        .then((res) => {
+          if (res.data.message === 'user created') {
+            toast.success('User created!')
+            console.log(res.data.message)
+            router.push('/')
+          }
+        })
+        // .catch(() => toast.error('Something went wrong!'))
+        .finally(() => {
+          setLoading('Register')
+        })
+    } catch (error: any) {
       if (error instanceof z.ZodError) {
-        // Handle validation errors
-        console.error('Validation error:', error)
-        // console.log('signup failed  ', error.response.data.message)
+        console.error('Validation errors:', error.errors)
+        toast.error('Please correct the form errors.')
+      } else {
+        console.error('An error occurred:', error.response.data.message)
+        if (error.response.data.message === 'email already existe') {
+          toast.error('this email already existe')
+        } else if (error.response.data.message === 'an error occurred') {
+          toast.error('Something went wrong during registration.')
+        } else {
+          toast.error('Something went wrong during registration.')
+        }
       }
     }
   }
@@ -125,11 +130,7 @@ export default function page() {
           priority={true}
           className="mx-auto my-auto mb-2"
         />
-        <form
-          className="flex flex-col gap-5"
-          onSubmit={handleSubmit(onSubmit)}
-          //  onSubmit={handeSubmit}
-        >
+        <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
             placeholder="User Name"
@@ -151,7 +152,6 @@ export default function page() {
               //   },
               // }
             )}
-            // onChange={handelChange}
             className="border-b-2 text-sm focus:placeholder:text-sky-300 focus:border-sky-500 outline-none placeholder:text-sm placeholder:text-sky-400 pl-2"
           />
           {errors.username && (
@@ -175,7 +175,6 @@ export default function page() {
               //   },
               // }
             )}
-            // onChange={handelChange}
             className="border-b-2 text-sm focus:placeholder:text-sky-300 focus:border-sky-500 outline-none placeholder:text-sm placeholder:text-sky-400 pl-2"
           />
           {errors.email && (
@@ -209,7 +208,6 @@ export default function page() {
               //   },
               // }
             )}
-            // onChange={handelChange}
             className="border-b-2 text-sm placeholder:text-sm focus:placeholder:text-sky-300 outline-none focus:border-sky-500 placeholder:text-sky-400 pl-2"
           />
           {errors.password && (
@@ -231,7 +229,6 @@ export default function page() {
               //     value === getValues('password') || 'Passwords do not match',
               // }
             )}
-            // onChange={handelChange}
             className="border-b-2 text-sm placeholder:text-sm focus:placeholder:text-sky-300 outline-none focus:border-sky-500 placeholder:text-sky-400 pl-2"
           />
           {errors.confirmpassword && (
@@ -242,10 +239,25 @@ export default function page() {
               {errors.confirmpassword.message}
             </span>
           )}
-          {/* {values.error && <div className="bg-red-400">{values.error}</div>} */}
-          <button className="bg-sky-500 py-1 mt-2 text-white font-semibold">
-            Register
-          </button>
+          {loading === 'Register' ? (
+            <button className="bg-sky-500 py-1 mt-2 text-white font-semibold">
+              Register
+            </button>
+          ) : loading === 'loading...' ? (
+            <button
+              className="bg-sky-300 py-1 mt-2 text-white font-semibold cursor-wait"
+              disabled
+            >
+              <div
+                className="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                role="status"
+              ></div>
+            </button>
+          ) : (
+            <button className="bg-sky-500 py-1 mt-2 text-white font-semibold">
+              Register
+            </button>
+          )}
         </form>
         <div className=" mt-8">
           <h6 className="text-xs text-gray-500 text-right">
