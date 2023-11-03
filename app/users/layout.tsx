@@ -16,13 +16,10 @@ export default async function Layout({
 }) {
   const users = await getUsers()
 
-
   return (
-    <div className="h-screen">
+    <div className="h-screen dark:bg-[#1F1F1F]">
       <SideBarO>
-        <TheUsers
-         users={users}
-          />
+        <TheUsers users={users} />
         {children}
       </SideBarO>
     </div>

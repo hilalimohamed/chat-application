@@ -8,6 +8,10 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['bcrypt'],
     serverComponents: true,
+    serverActions: true,
+  },
+  images: {
+    domains: ['res.cloudinary.com'],
   },
 }
 module.exports = nextConfig

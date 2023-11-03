@@ -1,9 +1,5 @@
 import React from 'react'
 
 export default function page() {
-  return (
-    <div>
-      messages
-    </div>
-  )
+  return <div className="lg:pl-80">Help</div>
 }

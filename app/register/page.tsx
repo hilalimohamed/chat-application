@@ -9,9 +9,8 @@ import { useForm } from 'react-hook-form'
 import { z, ZodError } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
-import { useRouter } from 'next/navigation' 
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
-
 
 interface FormData {
   username: string
@@ -24,7 +23,7 @@ const schema = z
     username: z
       .string()
       .min(3, 'Username must be at least 3 characters')
-      .max(17, 'Username must be at most 17 characters')
+      .max(25, 'Username must be at most 17 characters')
       .regex(/^[A-Za-z]+$/i, 'Username must contain only letters')
       .optional(),
     email: z.string().email('Invalid email address').optional(),
@@ -49,14 +48,13 @@ export default function page() {
   const router = useRouter()
   const [loading, setLoading] = useState('Register')
 
-
-    useEffect(() => {
-      // Check if the user is authenticated
-      if (session?.user) {
-        // Redirect to the desired path for authenticated users
-        router.push('/users')
-      }
-    }, [session, router])
+  useEffect(() => {
+    // Check if the user is authenticated
+    if (session?.user) {
+      // Redirect to the desired path for authenticated users
+      router.push('/users')
+    }
+  }, [session, router])
 
   const {
     register,
@@ -111,14 +109,14 @@ export default function page() {
   }
 
   return (
-    <div className="flex place-items-center justify-center h-screen">
+    <div className="flex place-items-center justify-center h-screen dark:bg-[#1F1F1F]">
       <div className="border-2 w-[340px] h-[471px] shadow-2xl border-r-sky-500 border-sky-500">
         <Image src={img1} alt="" width={360} height={544} priority={true} />
-        <h1 className="text-2xl text-center w-full p-4 text-sky-500 font-mono font-bold cursor-default">
+        <h1 className="text-2xl text-center w-full p-[30px] text-sky-500 font-mono font-bold cursor-default dark:bg-white">
           WELCOME TO CHAT
         </h1>
       </div>
-      <div className="shadow-2xl p-6 w-1/4 border-2 border-b-sky-500">
+      <div className="shadow-2xl p-6 px-9 w-[350px] h-[471px] border-2 border-l-0 border-sky-500 dark:bg-[#282828]">
         <h1 className="text-sky-500 font-bold text-center mb-2 text-xl">
           Register
         </h1>
@@ -152,7 +150,7 @@ export default function page() {
               //   },
               // }
             )}
-            className="border-b-2 text-sm focus:placeholder:text-sky-300 focus:border-sky-500 outline-none placeholder:text-sm placeholder:text-sky-400 pl-2"
+            className="border-b-2 text-sm focus:placeholder:text-sky-300 focus:border-sky-500 outline-none placeholder:text-sm placeholder:text-sky-400 pl-2 dark:bg-[#282828] dark:border-gray-500 dark:text-gray-300"
           />
           {errors.username && (
             <span
@@ -175,7 +173,7 @@ export default function page() {
               //   },
               // }
             )}
-            className="border-b-2 text-sm focus:placeholder:text-sky-300 focus:border-sky-500 outline-none placeholder:text-sm placeholder:text-sky-400 pl-2"
+            className="border-b-2 text-sm focus:placeholder:text-sky-300 focus:border-sky-500 outline-none placeholder:text-sm placeholder:text-sky-400 pl-2 dark:bg-[#282828] dark:border-gray-500 dark:text-gray-300"
           />
           {errors.email && (
             <span
@@ -208,7 +206,7 @@ export default function page() {
               //   },
               // }
             )}
-            className="border-b-2 text-sm placeholder:text-sm focus:placeholder:text-sky-300 outline-none focus:border-sky-500 placeholder:text-sky-400 pl-2"
+            className="border-b-2 text-sm placeholder:text-sm focus:placeholder:text-sky-300 outline-none focus:border-sky-500 placeholder:text-sky-400 pl-2 dark:bg-[#282828] dark:border-gray-500 dark:text-gray-300"
           />
           {errors.password && (
             <span
@@ -229,7 +227,7 @@ export default function page() {
               //     value === getValues('password') || 'Passwords do not match',
               // }
             )}
-            className="border-b-2 text-sm placeholder:text-sm focus:placeholder:text-sky-300 outline-none focus:border-sky-500 placeholder:text-sky-400 pl-2"
+            className="border-b-2 text-sm placeholder:text-sm focus:placeholder:text-sky-300 outline-none focus:border-sky-500 placeholder:text-sky-400 pl-2 dark:bg-[#282828] dark:border-gray-500 dark:text-gray-300"
           />
           {errors.confirmpassword && (
             <span
@@ -264,7 +262,7 @@ export default function page() {
             Already have an account ?{' '}
             <Link
               href={'/'}
-              className="underline text-xs text-blue-800 hover:text-blue-500 font-semibold"
+              className="underline text-xs text-blue-800 hover:text-blue-500 font-semibold dark:text-gray-100 dark:hover:text-gray-400"
             >
               login
             </Link>

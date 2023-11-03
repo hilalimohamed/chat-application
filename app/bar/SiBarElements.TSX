@@ -8,15 +8,14 @@ import { TiMessages } from 'react-icons/ti'
 import { HiUsers } from 'react-icons/hi'
 import { MdLogout } from 'react-icons/md'
 
-
 export default function SiBarElements() {
   const pathname = usePathname()
   const theElements = useMemo(
     () => [
       {
-        label: 'Messages',
-        link: '/messages',
-        active: pathname === 'messages',
+        label: 'Convertations',
+        link: '/conversations',
+        active: pathname === 'conversations',
         icon: GiConversation,
       },
       {

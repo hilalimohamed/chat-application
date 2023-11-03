@@ -1,7 +1,7 @@
 import prisma from '@/app/lib/prisma'
-import  getSession  from './getSession'
+import getSession from './getSession'
 
-export const getUser = async () => {
+export default async function getUser() {
   try {
     const session = await getSession()
     if (!session?.user?.email) {
@@ -20,4 +20,3 @@ export const getUser = async () => {
     return null
   }
 }
-

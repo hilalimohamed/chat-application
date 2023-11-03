@@ -11,7 +11,7 @@ export default function ToasterContext() {
         duration: 1500,
         success: {
           style: {
-            backgroundColor: 'rgba(0, 0, 0, 0)',
+            backgroundColor: 'rgb(218,255,181)',
             color: 'black',
             borderRadius: '3px',
             borderLeft: '5px solid green',
@@ -19,7 +19,7 @@ export default function ToasterContext() {
         },
         error: {
           style: {
-            backgroundColor: 'rgba(0, 0, 0, 0)',
+            backgroundColor: 'rgb(255,193,180)',
             color: 'black',
             borderRadius: '2px',
             borderLeft: '5px solid red',

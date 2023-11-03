@@ -42,7 +42,7 @@ export default function LoginForm() {
   useEffect(() => {
     if (session?.status === 'authenticated') {
       console.log('authenticated')
-      router.push('users')
+      router.push('conversations')
     } else {
       console.log('unauthenticated')
     }
@@ -55,7 +55,6 @@ export default function LoginForm() {
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   })
-
   const onSubmit = (data: FormData) => {
     try {
       const validatedData = schema.parse(data)
@@ -72,7 +71,7 @@ export default function LoginForm() {
             toast.error('Invalid login!')
           }
           if (callback?.ok) {
-            toast.success('Logged in!')
+            toast.success('Logged in! just wait a secand')
           }
         })
         .finally(() => {
@@ -91,7 +90,7 @@ export default function LoginForm() {
     }
   }
 
-  const socailMedia = (media: string) => {
+  const socialMedia = (media: string) => {
     setLoadingSocial(media)
     signIn(media)
       .then((callback) => {
@@ -108,14 +107,14 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="flex place-items-center justify-center h-screen">
-      <div className="border-2 w-[340px] h-[471px] shadow-2xl border-r-sky-500 border-sky-500">
+    <div className="flex place-items-center justify-center h-screen dark:bg-[#1F1F1F]">
+      <div className="border-2 w-[340px] h-[471px] shadow-2xl border-r-[#039be6] border-[#039be6]">
         <Image src={img1} alt="" width={360} height={544} priority={true} />
-        <h1 className="text-2xl text-center w-full bg-sky-500 p-12 border-b-4 text-white font-mono border-sky-500 font-bold cursor-default">
+        <h1 className="text-2xl text-center w-full bg-[#039be6]  p-12 border-b-4 text-white font-mono border-[#039be6] font-bold cursor-default">
           WELCOME TO CHAT
         </h1>
       </div>
-      <div className="shadow-2xl p-9 border-2 border-b-sky-500">
+      <div className="shadow-2xl p-9 border-2 border-l-0 border-[#039be6] h-[471px] max-h-[471px] dark:bg-[#282828]">
         <h1 className="text-sky-500 font-bold text-center mb-2 text-xl">
           Log In
         </h1>
@@ -132,7 +131,7 @@ export default function LoginForm() {
             type="text"
             placeholder="Email"
             {...register('email')}
-            className="border-b-2 text-sm focus:placeholder:text-sky-300 focus:border-sky-500 outline-none placeholder:text-sm placeholder:text-sky-400 pl-2"
+            className="border-b-2 text-sm focus:placeholder:text-sky-200 focus:border-sky-500 outline-none placeholder:text-sm placeholder:text-sky-500 pl-2 dark:bg-[#282828] dark:border-gray-500 dark:text-gray-300"
           />
           {errors.email && (
             <span
@@ -146,7 +145,7 @@ export default function LoginForm() {
             type="password"
             placeholder="Password"
             {...register('password')}
-            className="border-b-2 text-sm placeholder:text-sm focus:placeholder:text-sky-300 outline-none focus:border-sky-500 placeholder:text-sky-400 pl-2"
+            className="border-b-2 text-sm placeholder:text-sm focus:placeholder:text-sky-200 outline-none focus:border-sky-500 placeholder:text-sky-500 pl-2 dark:bg-[#282828] dark:border-gray-500 dark:text-gray-300"
           />
           {errors.password && (
             <span
@@ -177,8 +176,11 @@ export default function LoginForm() {
           )}
         </form>
         <div className="mt-7 mb-6 relative">
-          <div style={{ height: '2px' }} className="bg-gray-200"></div>
-          <h3 className="absolute -top-2 left-1/3 px-1 bg-white text-gray-500 text-sm">
+          <div
+            style={{ height: '2px' }}
+            className="bg-gray-200 dark:bg-gray-500"
+          ></div>
+          <h3 className="absolute -top-2 left-1/3 px-1 bg-white text-gray-500 text-sm dark:bg-[#282828] dark:text-gray-200">
             Or sign in with
           </h3>
         </div>
@@ -202,7 +204,7 @@ export default function LoginForm() {
             </button>
           ) : (
             <button
-              onClick={() => socailMedia('github')}
+              onClick={() => socialMedia('github')}
               className="flex items-center bg-black py-1 px-2 mx-2"
             >
               <FaSquareGithub className="text-white text-xl" />
@@ -223,7 +225,7 @@ export default function LoginForm() {
             </button>
           ) : (
             <button
-              onClick={() => socailMedia('google')}
+              onClick={() => socialMedia('google')}
               className="flex items-center bg-red-500 py-1 px-3"
             >
               <FcGoogle />
@@ -234,14 +236,14 @@ export default function LoginForm() {
           )}
         </div>
         <div className=" justify-between mt-5">
-          <button className="text-blue-700 text-xs hover:underline hover:text-blue-500 font-semibold mb-2">
+          <button className="text-blue-700 text-xs hover:underline hover:text-blue-500 font-semibold mb-2 dark:text-gray-100 dark:hover:text-gray-400">
             forgot password
           </button>
           <h6 className="text-xs text-gray-500 text-right">
-            don't have an account ?{' '}
+            don't have an account ?
             <Link
               href={'/register'}
-              className="underline text-xs text-blue-800 hover:text-blue-500 font-semibold"
+              className="underline text-xs text-blue-800 hover:text-blue-500 font-semibold dark:text-gray-100 dark:hover:text-gray-400"
             >
               sign up
             </Link>

@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt'
 import prisma from '@/app/lib/prisma'
 // import { signIn } from 'next-auth/react'
 
-
 export async function POST(req: NextRequest) {
   try {
     const { name, email, password } = await req.json()
@@ -15,7 +14,7 @@ export async function POST(req: NextRequest) {
     })
     if (existingEmail) {
       return NextResponse.json(
-        { message: 'email already existe' },
+        { message: 'email already exist' },
         { status: 422 },
       )
     }
