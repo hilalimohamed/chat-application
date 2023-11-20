@@ -110,13 +110,13 @@ export default function page() {
 
   return (
     <div className="flex place-items-center justify-center h-screen dark:bg-[#1F1F1F]">
-      <div className="border-2 w-[340px] h-[471px] shadow-2xl border-r-sky-500 border-sky-500">
+      <div className="hidden md:block lg:block  border-2 w-[340px] h-[471px] shadow-2xl border-r-sky-500 border-sky-500">
         <Image src={img1} alt="" width={360} height={544} priority={true} />
         <h1 className="text-2xl text-center w-full p-[30px] text-sky-500 font-mono font-bold cursor-default dark:bg-white">
           WELCOME TO CHAT
         </h1>
       </div>
-      <div className="shadow-2xl p-6 px-9 w-[350px] h-[471px] border-2 border-l-0 border-sky-500 dark:bg-[#282828]">
+      <div className="shadow-2xl p-6 px-9 w-[350px] h-[471px] border-2 md:border-l-0 lg:border-l-0 border-sky-500 dark:bg-[#282828]">
         <h1 className="text-sky-500 font-bold text-center mb-2 text-xl">
           Register
         </h1>

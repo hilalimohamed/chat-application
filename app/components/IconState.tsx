@@ -17,9 +17,9 @@ export default function IconState() {
           className="mx-auto my-auto mb-2"
         /> */}
         <div className="flex gap-5 items-end justify-center dark:text-[#7a7a7ae4]">
-          <FaPeopleRoof size={35} />
-          <HiChatBubbleBottomCenterText size={80} />
-          <MdEmojiPeople size={40} />
+          <FaPeopleRoof size={35} className="animate-pulse" />
+          <HiChatBubbleBottomCenterText size={80} className="animate-bounce" />
+          <MdEmojiPeople size={40} className="animate-pulse" />
         </div>
         <div className="flex flex-col gap-3">
           <h3 className="mt-2 text-xl font-extrabold text-gray-900 dark:text-[#e9e4e4]">

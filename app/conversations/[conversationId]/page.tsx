@@ -20,7 +20,7 @@ export default async function page({
   // const lastMessages = await getLastMessages(params.conversationId)
 
   return (
-    <div className="lg:ml-[310px] h-full dark:bg(${img})">
+    <div className="lg:ml-[310px] h-full dark:bg-[#282828]">
       <div className="h-full flex flex-col">
         <ConversationById conversationId={conversationId} />
         <Messages allMessages={messages} />

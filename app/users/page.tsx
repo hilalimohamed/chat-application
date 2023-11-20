@@ -4,7 +4,7 @@ import Conversation from '../components/Conversation'
 export default async function page() {
   // const user = await getUser()
   return (
-    <div className="lg:pl-80 lg:block h-screen">
+    <div className="hidden lg:pl-80 lg:block h-screen z-50">
       <Conversation
       // user={user}
       />

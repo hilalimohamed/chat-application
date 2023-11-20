@@ -121,9 +121,12 @@ function formatLastMessageDate(lastMessage: any) {
     return 'Yesterday'
   } else {
     // The message is older, show the date in short format
-    return messageDate.toLocaleString('en-US', {
-      day: 'numeric',
-      month: 'numeric',
+    return messageDate.toLocaleString('en-GB', {
+      // month: 'numeric',
+      // day: 'numeric',
+      // year: 'numeric',
+      day: '2-digit',
+      month: '2-digit',
       year: 'numeric',
     })
   }

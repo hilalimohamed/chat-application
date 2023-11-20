@@ -105,16 +105,16 @@ export default function LoginForm() {
         setLoadingSocial('nothing')
       })
   }
-
+  // mt-8 sm:mx-auto sm:w-full sm:max-w-md
   return (
     <div className="flex place-items-center justify-center h-screen dark:bg-[#1F1F1F]">
-      <div className="border-2 w-[340px] h-[471px] shadow-2xl border-r-[#039be6] border-[#039be6]">
+      <div className="hidden md:block lg:block border-2 w-[340px] h-[471px] shadow-2xl border-r-[#039be6] border-[#039be6]">
         <Image src={img1} alt="" width={360} height={544} priority={true} />
         <h1 className="text-2xl text-center w-full bg-[#039be6]  p-12 border-b-4 text-white font-mono border-[#039be6] font-bold cursor-default">
           WELCOME TO CHAT
         </h1>
       </div>
-      <div className="shadow-2xl p-9 border-2 border-l-0 border-[#039be6] h-[471px] max-h-[471px] dark:bg-[#282828]">
+      <div className="shadow-2xl p-9 border-2 md:border-l-0 lg:border-l-0 border-[#039be6] h-[471px] max-h-[471px] dark:bg-[#282828]">
         <h1 className="text-sky-500 font-bold text-center mb-2 text-xl">
           Log In
         </h1>

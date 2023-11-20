@@ -1,7 +1,10 @@
 import prisma from '@/app/lib/prisma'
+// import { subDays, startOfDay, endOfDay } from 'date-fns'
 
 const getMessages = async (conversationId: string) => {
   try {
+    // const today = new Date()
+    // const yesterday = subDays(today, 1)
     const messages = await prisma.message.findMany({
       where: {
         conversationId: conversationId,
@@ -9,6 +12,8 @@ const getMessages = async (conversationId: string) => {
       include: {
         user: true,
       },
+      // skip: 10,
+      // take: 10,
       orderBy: {
         createdAt: 'asc',
       },

@@ -5,9 +5,11 @@ import { useEffect, useRef, useState } from 'react'
 import MessageContent from './MessageContent'
 import img from '@/public/icons/bg of chat app2.jpg'
 import Image from 'next/image'
+import NoMessages from './NoMessages'
 
 const Messages = ({ allMessages }: { allMessages: any }) => {
   const [messages, setMessages] = useState(allMessages)
+  // console.log('mess  ', messages.length)
   const bottomRef = useRef<HTMLDivElement>(null)
 
   //   useEffect(() => {
@@ -29,9 +31,13 @@ const Messages = ({ allMessages }: { allMessages: any }) => {
         <Image width={900} height={600} src={img} alt="" />
       </div> */}
       <div className="z-50 relative mx-2">
-        {messages.map((message: any) => (
-          <MessageContent key={message.id} data={message} />
-        ))}
+        {messages.length !== 0 ? (
+          messages.map((message: any) => (
+            <MessageContent key={message.id} data={message} />
+          ))
+        ) : (
+          <NoMessages />
+        )}
         {/* <div className="pt-24" ref={bottomRef} /> */}
       </div>
       <div className="pt-11" />

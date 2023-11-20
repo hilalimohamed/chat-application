@@ -27,9 +27,22 @@ export default function theUsers({ users }: { users: User[] }) {
     [users, router],
   )
   console.log('the Users : ', users)
+  // fixed
+  // inset-y-0
+  // pb-20
+  // lg:pb-0
+  // lg:left-20
+  // lg:w-80
+  // lg:block
+  // overflow-y-auto
+  // border-r
+  // border-gray-200
+  // block w-full left-0
   return (
-    <div className="fixed lg:pb-0 lg:left-24 lg:w-[367px] overflow-y-auto inset-y-0 lg:block">
-      <div className="fixed font-bold p-3  text-xl dark:text-white">Chats</div>
+    <div className="fixed lg:pb-0 lg:left-24 lg:w-[367px] overflow-y-scroll w-full left-0 inset-y-0 lg:block">
+      <div className="fixed font-bold p-3 bg-[#181818] border-b border-gray-200 lg:border-none lg:bg-transparent w-full text-xl dark:text-white">
+        Chats
+      </div>
       <div className="mt-14">
         {users.map((user, index) => (
           <ul

@@ -8,7 +8,7 @@ import Input from './Input'
 import { CldUploadButton } from 'next-cloudinary'
 
 const FormPage = ({ conversationId }: { conversationId: any }) => {
-  console.log('hola:  >>  ', conversationId[0]?.id)
+  // console.log('hola:  >>  ', conversationId[0]?.id)
   const {
     register,
     handleSubmit,

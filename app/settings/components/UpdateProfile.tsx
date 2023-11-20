@@ -9,7 +9,7 @@ export default function UpdateProfile() {
   return (
     // <div className="fixed left-0 lg:pl-28 h-full bg-yellow-200">
     <div className="dark:bg-[#1F1F1F] fixed bg-white inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-96 lg:h-full lg:block overflow-y-auto border-r border-gray-200 dark:border-gray-700 dark:border-opacity-50 block w-full left-0">
-      <div className="lg:pl-2 flex lg:flex-col justify-between h-full lg:py-4">
+      <div className="lg:pl-2 lg:flex lg:flex-col lg:justify-between h-full lg:py-4">
         <ul className="pr-2 flex flex-col gap-4">
           <Link href="/settings/generale">
             <li className="hover:bg-gray-200 px-3 py-2 cursor-pointer flex items-center gap-5 dark:hover:bg-opacity-5 dark:text-white">

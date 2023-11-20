@@ -10,8 +10,6 @@ import { format } from 'util'
 import { isValid } from 'date-fns'
 import { enUS } from 'date-fns/locale'
 import LastMessageInfo from './LastMessageInfo'
-import useConversation from '@/app/hooks/useConversation'
-import clsx from 'clsx'
 
 export default function TheConversation({
   conversations,
@@ -20,22 +18,13 @@ export default function TheConversation({
 }) {
   const router = useRouter()
   const convUser = useConvUser(conversations[0])
-  // console.log('conve >>  ', conversations, '  howa :   ', convUser[0])
-  // console.log('conveomess >>  ', conversations)
   const toConversasionId = (convertaionId: string) => {
     router.push(`/conversations/${convertaionId}`)
   }
 
-  const { isOpen } = useConversation()
-
   return (
-    <div
-      className={clsx(
-        'fixed left-0 w-full lg:w-[462px] lg:pl-24 overflow-y-auto inset-y-0 lg:block scrollbar-thumb-gray-600 scrollbar-thin dark:scrollbar-thumb-[#2f2f2f]',
-        isOpen ? 'hidden' : 'block',
-      )}
-    >
-      <div className="text-2xl font-bold text-neutral-800 p-4 border-gray-200 lg:border-none border-b bg-[#181818] lg:bg-transparent dark:text-white">
+    <div className="fixed w-full overflow-y-auto inset-y-0 block lg:hidden scrollbar-thumb-gray-600 scrollbar-thin dark:scrollbar-thumb-[#2f2f2f]">
+      <div className="text-2xl font-bold text-neutral-800 p-4 border-gray-200 border-b bg-[#181818] dark:text-white">
         Messages
       </div>
       <div className="">
