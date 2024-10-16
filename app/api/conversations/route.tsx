@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import  getUser  from '@/app/action/getUser'
+import getUser from '@/app/action/getUser'
 import prisma from '@/app/lib/prisma'
 
 export async function POST(req: NextRequest) {
@@ -9,15 +9,34 @@ export async function POST(req: NextRequest) {
 
     const existingConversations = await prisma.conversation.findMany({
       where: {
-        OR: [
+        // when using mongodb
+        // OR: [
+        //   {
+        //     userIds: {
+        //       equals: [user?.id, userId],
+        //     },
+        //   },
+        //   {
+        //     userIds: {
+        //       equals: [userId, user?.id],
+        //     },
+        //   },
+        // ],
+
+        // when using PostgreSQL
+        AND: [
           {
-            userIds: {
-              equals: [user?.id, userId],
+            users: {
+              some: {
+                id: user?.id,
+              },
             },
           },
           {
-            userIds: {
-              equals: [userId, user?.id],
+            users: {
+              some: {
+                id: userId,
+              },
             },
           },
         ],

@@ -52,7 +52,7 @@ export default function page() {
     // Check if the user is authenticated
     if (session?.user) {
       // Redirect to the desired path for authenticated users
-      router.push('/users')
+      router.push('/conversations')
     }
   }, [session, router])
 
@@ -73,7 +73,6 @@ export default function page() {
       // If validation succeeds, you can proceed with submitting the data
       console.log('Valid form data:', validatedData)
       setLoading('loading...')
-      // Call your API to submit the data here
       const response = await axios
         .post('/api/register', {
           name: data.username,
@@ -81,6 +80,9 @@ export default function page() {
           password: data.password,
         })
         .then((res) => {
+          if (res.data.message === 'email already exist') {
+            toast.success('User created!')
+          }
           if (res.data.message === 'user created') {
             toast.success('User created!')
             console.log(res.data.message)

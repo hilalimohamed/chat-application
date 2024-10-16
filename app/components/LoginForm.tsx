@@ -42,7 +42,7 @@ export default function LoginForm() {
   useEffect(() => {
     if (session?.status === 'authenticated') {
       console.log('authenticated')
-      router.push('conversations')
+      router.push('/conversations')
     } else {
       console.log('unauthenticated')
     }
@@ -68,7 +68,7 @@ export default function LoginForm() {
       })
         .then((callback) => {
           if (callback?.error) {
-            toast.error('Invalid login!')
+            toast.error(callback?.error)
           }
           if (callback?.ok) {
             toast.success('Logged in! just wait a secand')

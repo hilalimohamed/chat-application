@@ -36,15 +36,15 @@ export const authOptions: NextAuthOptions = {
             email: credentials.email,
           },
         })
-        if (!user || !user.password) {
-          throw new Error('invalid login')
+        if (!user) {
+          throw new Error("this user doesn't found")
         }
         const isCorectPassword = await bcrypt.compare(
           credentials.password,
           user.password,
         )
         if (!isCorectPassword) {
-          throw new Error('invalid login')
+          throw new Error('password not correct')
         }
         return user
       },

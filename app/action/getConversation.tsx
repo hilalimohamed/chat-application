@@ -9,8 +9,16 @@ export const getConversations = async () => {
     }
     const conversations = await prisma.conversation.findMany({
       where: {
-        userIds: {
-          has: user.id,
+        //  when using mongodb
+        // userIds: {
+        //   has: user.id,
+        // },
+
+        // when using PostgreSQL
+        users: {
+          some: {
+            id: user.id,
+          },
         },
       },
       include: {
