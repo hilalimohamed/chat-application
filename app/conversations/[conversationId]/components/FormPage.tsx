@@ -15,9 +15,9 @@ const FormPage = ({ conversationId }: { conversationId: any }) => {
     setValue,
     formState: { errors },
   } = useForm<FieldValues>({
-    defaultValues: {
-      message: '',
-    },
+    // defaultValues: {
+    //   message: '',
+    // },
   })
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {

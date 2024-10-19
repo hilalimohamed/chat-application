@@ -51,6 +51,7 @@ export default function LoginForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -76,6 +77,7 @@ export default function LoginForm() {
         })
         .finally(() => {
           setLoading('Log In')
+          reset()
         })
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -114,7 +116,7 @@ export default function LoginForm() {
           WELCOME TO CHAT
         </h1>
       </div>
-      <div className="shadow-2xl p-9 border-2 md:border-l-0 lg:border-l-0 border-[#039be6] h-[471px] max-h-[471px] dark:bg-[#282828]">
+      <div className="shadow-2xl p-9 border-2 md:border-l-0 lg:border-l-0 border-[#039be6] w-[340px] h-[471px] max-h-[471px] dark:bg-[#282828]">
         <h1 className="text-sky-500 font-bold text-center mb-2 text-xl">
           Log In
         </h1>
@@ -184,11 +186,11 @@ export default function LoginForm() {
             Or sign in with
           </h3>
         </div>
-        <div className="flex justify-between">
-          <button className="flex items-center bg-blue-900 text-white py-1 px-2 cursor-no-drop">
+        <div className="flex justify-around">
+          {/* <button className="flex items-center bg-blue-900 text-white py-1 px-2 cursor-no-drop">
             <FaFacebookF className="" />
             <span className="text-xs ml-1 font-semibold">Facebook</span>
-          </button>
+          </button> */}
           {loadingSocial === 'github' ? (
             <button
               className="flex items-center bg-gray-800 py-1 px-2 mx-2"
