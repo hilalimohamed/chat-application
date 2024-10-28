@@ -7,7 +7,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
-export default function theUsers({ users }: { users: User[] }) {
+export default function TheUsers({ users }: { users: User[] }) {
   const router = useRouter()
   const conversationClick = useCallback(
     async (data: User) => {
