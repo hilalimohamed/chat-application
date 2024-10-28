@@ -15,7 +15,7 @@ interface useresd {
   user: User
 }
 
-export default function Page({ user }: { user: any }) {
+export default function PageOfBare({ user }: { user: any }) {
   const elements = useLink()
 
   return (
