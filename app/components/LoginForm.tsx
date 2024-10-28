@@ -238,9 +238,11 @@ export default function LoginForm() {
           )}
         </div>
         <div className=" justify-between mt-5">
-          <button className="text-blue-700 text-xs hover:underline hover:text-blue-500 font-semibold mb-2 dark:text-gray-100 dark:hover:text-gray-400">
-            forgot password
-          </button>
+          <Link href="/forgot-password">
+            <button className="text-blue-700 text-xs hover:underline hover:text-blue-500 font-semibold mb-2 dark:text-gray-100 dark:hover:text-gray-400">
+              forgot password
+            </button>
+          </Link>
           <h6 className="text-xs text-gray-500 text-right">
             don't have an account ?
             <Link

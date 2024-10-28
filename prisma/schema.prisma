@@ -61,16 +61,32 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid()) @map("_id")
-  name      String
-  email     String   @unique
-  image     String?
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                String   @id @default(uuid()) @map("_id")
+
+  name              String
+  email             String   @unique
+  emailVerified     DateTime?
+
+  image             String?
+
+  password          String
+  resetToken        String?
+  resetTokenExpires DateTime?
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
   conversations Conversation[] // Define many-to-many relation without array-based foreign keys
   messages      Message[]
+}
+
+model VerificationToken {
+  id       String      @id @default(uuid())
+  email    String
+  token    String
+  expires  DateTime
+
+  @@unique([email, token])
 }
 
 model Conversation {

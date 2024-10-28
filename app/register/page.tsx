@@ -83,8 +83,11 @@ export default function page() {
           if (res.data.message === 'email already exist') {
             toast.success('User created!')
           }
-          if (res.data.message === 'user created') {
-            toast.success('User created!')
+          if (
+            res.data.message ===
+            'User was Created and Email Verification was sent'
+          ) {
+            toast.success('User was Created, Email Verification was sent')
             console.log(res.data.message)
             router.push('/')
           }

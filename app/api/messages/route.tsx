@@ -1,6 +1,6 @@
 import getUser from '@/app/action/getUser'
-import prisma from '@/app/lib/prisma'
-import { pusherServer } from '@/app/lib/pusher'
+import prisma from '@/lib/prisma'
+import { pusherServer } from '@/lib/pusher'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {

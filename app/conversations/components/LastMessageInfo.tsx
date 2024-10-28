@@ -1,5 +1,5 @@
 import useConversation from '@/app/hooks/useConversation'
-import { pusherClient } from '@/app/lib/pusher'
+import { pusherClient } from '@/lib/pusher'
 import { find } from 'lodash'
 import { useEffect, useRef, useState } from 'react'
 

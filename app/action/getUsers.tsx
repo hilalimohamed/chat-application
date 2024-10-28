@@ -1,4 +1,4 @@
-import prisma from '../lib/prisma'
+import prisma from '../../lib/prisma'
 import getSession from './getSession'
 
 export const getUsers = async () => {
@@ -20,4 +20,3 @@ export const getUsers = async () => {
     return []
   }
 }
-

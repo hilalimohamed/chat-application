@@ -1,5 +1,5 @@
 import getUser from './getUser'
-import prisma from '../lib/prisma'
+import prisma from '../../lib/prisma'
 
 export const getConvertationId = async (convId: string) => {
   try {

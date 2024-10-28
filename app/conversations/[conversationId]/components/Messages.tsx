@@ -6,7 +6,7 @@ import MessageContent from './MessageContent'
 import img from '@/public/icons/bg of chat app2.jpg'
 import Image from 'next/image'
 import NoMessages from './NoMessages'
-import { pusherClient } from '@/app/lib/pusher'
+import { pusherClient } from '@/lib/pusher'
 import useConversation from '@/app/hooks/useConversation'
 import { find } from 'lodash'
 
@@ -18,7 +18,7 @@ const Messages = ({ allMessages }: { allMessages: any }) => {
   // console.log('ga : ',conversationId)
 
   useEffect(() => {
-      // if (!conversationId) return;
+    // if (!conversationId) return;
     pusherClient.subscribe(conversationId)
     bottomRef?.current?.scrollIntoView()
 
@@ -31,14 +31,13 @@ const Messages = ({ allMessages }: { allMessages: any }) => {
       })
       bottomRef?.current?.scrollIntoView()
       // bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-
     }
 
     pusherClient.bind('new-message', updateMessageHandler)
 
-    return()=>{
+    return () => {
       pusherClient.unsubscribe(conversationId)
-      pusherClient.unbind('new-message',updateMessageHandler)
+      pusherClient.unbind('new-message', updateMessageHandler)
     }
   }, [conversationId])
 

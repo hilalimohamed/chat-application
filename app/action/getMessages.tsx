@@ -1,4 +1,4 @@
-import prisma from '@/app/lib/prisma'
+import prisma from '@/lib/prisma'
 // import { subDays, startOfDay, endOfDay } from 'date-fns'
 
 const getMessages = async (conversationId: string) => {

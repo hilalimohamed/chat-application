@@ -1,4 +1,4 @@
-import prisma from '@/app/lib/prisma'
+import prisma from '@/lib/prisma'
 
 const getLastMessages = async (conversationId: string) => {
   try {
