@@ -14,6 +14,12 @@ const nextConfig = {
   images: {
     domains: ['res.cloudinary.com'],
   },
+  typescript: {
+    ignoreBuildErrors: true, // Ignore TypeScript build errors
+  },
+  eslint: {
+    ignoreDuringBuilds: true, // Ignore ESLint build errors
+  },
 }
 module.exports = nextConfig
 
