@@ -6,7 +6,6 @@ import GitHubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import prisma from '@/lib/prisma'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import { text } from 'stream/consumers'
 import bcrypt from 'bcrypt'
 import { getUserById } from '@/data/user'
 

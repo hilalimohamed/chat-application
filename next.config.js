@@ -22,22 +22,3 @@ const nextConfig = {
   },
 }
 module.exports = nextConfig
-
-//   serverComponentsExternalPackages: ['bcrypt'],
-// module.exports = {
-//   reactStrictMode: true, // Enable React Strict Mode
-//   images: {
-//     // domains: ['example.com'], // Allow specific domains for images
-//   },
-//   // ...other configuration options
-// };
-
-// const withTM = require('next-transpile-modules')(['bcrypt'])
-
-// module.exports = withTM({
-//     webpack: (config) => {
-//         // Exclude bcrypt from the bundle using webpack-node-externals
-//         config.externals.push('bcrypt')
-//     return config
-//   },
-// })
