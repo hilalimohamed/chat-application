@@ -27,10 +27,10 @@ export default function UpdateName({ user }: { user: any }) {
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
-      yourName: user.name || '',
+      yourName: user?.name || '',
     },
   })
-  const [yourName, setYourName] = useState(user.name || 'your name')
+  const [yourName, setYourName] = useState(user?.name || 'your name')
   const [lenght, setLenght] = useState(yourName.length)
 
   const handleFirstButton = () => {
@@ -136,7 +136,7 @@ export default function UpdateName({ user }: { user: any }) {
       ) : (
         <div className="flex gap-5 items-center">
           <h1 className="font-semibold text-lg text-gray-800 dark:text-white">
-            {user.name}
+            {user?.name}
           </h1>
           <div
             onClick={handleFirstButton}

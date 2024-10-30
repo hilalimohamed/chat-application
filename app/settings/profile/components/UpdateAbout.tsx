@@ -25,10 +25,10 @@ export default function UpdateAbout({ user }: { user: any }) {
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
-      aboutYou: 'mohammed',
+      aboutYou: 'about you',
     },
   })
-  const [aboutYou, setAboutYou] = useState('mohammed')
+  const [aboutYou, setAboutYou] = useState('about you')
   const [lenght, setLenght] = useState(aboutYou.length)
 
   const handleSecondButton = () => {
