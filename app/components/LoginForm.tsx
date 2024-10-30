@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import img from '@/public/images/groupeChat.jpg'
-import img1 from '@/public/images/save.jpg'
+import img1 from '@/public/save.jpg'
 import Link from 'next/link'
 import { FaFacebookF } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
