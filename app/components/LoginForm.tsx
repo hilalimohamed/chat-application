@@ -39,14 +39,14 @@ export default function LoginForm() {
   const [loadingSocial, setLoadingSocial] = useState('nothing')
   const router = useRouter()
 
-  useEffect(() => {
-    if (session?.status === 'authenticated') {
-      console.log('authenticated')
-      router.push('/conversations')
-    } else {
-      console.log('unauthenticated')
-    }
-  }, [session?.status, router])
+  // useEffect(() => {
+  //   if (session?.status === 'authenticated') {
+  //     console.log('authenticated')
+  //     router.push('/conversations')
+  //   } else {
+  //     console.log('unauthenticated')
+  //   }
+  // }, [session?.status, router])
 
   const {
     register,
@@ -66,6 +66,7 @@ export default function LoginForm() {
         email,
         password,
         redirect: false,
+        // callbackUrl: '/conversations',
       })
         .then((callback) => {
           if (callback?.error) {
@@ -73,6 +74,7 @@ export default function LoginForm() {
           }
           if (callback?.ok) {
             toast.success('Logged in! just wait a secand')
+            router.push('/conversations')
           }
         })
         .finally(() => {
@@ -94,7 +96,7 @@ export default function LoginForm() {
 
   const socialMedia = (media: string) => {
     setLoadingSocial(media)
-    signIn(media)
+    signIn(media, { callbackUrl: '/conversations' })
       .then((callback) => {
         if (callback?.error) {
           toast.error('Invalid login!')
