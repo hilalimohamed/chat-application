@@ -15,7 +15,8 @@ export const getConvertationId = async (convId: string) => {
         users: true,
       },
     })
-    return convertationId
+    // return convertationId
+     return convertationId.length > 0 ? convertationId : null
   } catch (error) {
     return null
   }

@@ -49,7 +49,7 @@ export const ForgotPasswordForm = () => {
 
   return (
     <CardWrapper
-      headerLabel="verification email to reset password"
+      headerLabel="Enter your email to reset your password."
       title="Forgot Password"
       backButtonHref="/"
       backButtonLabel="Back to login"
@@ -67,7 +67,7 @@ export const ForgotPasswordForm = () => {
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="mohammedsaid@email.com"
+                      placeholder="example@email.com"
                       type="email"
                     />
                   </FormControl>

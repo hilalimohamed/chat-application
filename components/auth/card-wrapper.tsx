@@ -24,7 +24,6 @@ const CardWrapper = ({
   backButtonLabel,
   backButtonHref,
   title,
-  showSocial,
 }: CardWrapperProps) => {
   return (
     <Card className="shadow-md w-full">
