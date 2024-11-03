@@ -50,36 +50,36 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  callbacks: {
-    async signIn({ user, account }: { user: any; account: any }) {
-      if (account?.provider !== 'credentials') return true
+  // callbacks: {
+  //   async signIn({ user, account }: { user: any; account: any }) {
+  //     if (account?.provider !== 'credentials') return true
 
-      const existingUser = await getUserById(user.id ?? '')
-      if (!existingUser?.emailVerified) return false
+  //     const existingUser = await getUserById(user.id ?? '')
+  //     if (!existingUser?.emailVerified) return false
 
-      return true
-    },
-    async session({ token, session }: { token: any; session: DefaultSession }) {
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: token.sub,
-          isOAuth: token.isOauth,
-        },
-      }
-    },
-    async jwt({ token }: { token: any }) {
-      if (!token.sub) return token
-      const existingUser = await getUserById(token.sub)
+  //     return true
+  //   },
+  //   async session({ token, session }: { token: any; session: DefaultSession }) {
+  //     return {
+  //       ...session,
+  //       user: {
+  //         ...session.user,
+  //         id: token.sub,
+  //         isOAuth: token.isOauth,
+  //       },
+  //     }
+  //   },
+  //   async jwt({ token }: { token: any }) {
+  //     if (!token.sub) return token
+  //     const existingUser = await getUserById(token.sub)
 
-      if (existingUser) {
-        token.name = existingUser.name
-        token.email = existingUser.email
-      }
-      return token
-    },
-  },
+  //     if (existingUser) {
+  //       token.name = existingUser.name
+  //       token.email = existingUser.email
+  //     }
+  //     return token
+  //   },
+  // },
   debug: process.env.NODE_ENV === 'development',
   session: {
     strategy: 'jwt',

@@ -8,14 +8,6 @@ export default function IconState() {
   return (
     <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6 h-full flex justify-center items-center bg-gray-100 dark:bg-[#282828]">
       <div className="text-center items-center flex flex-col gap-2">
-        {/* <Image
-          src={img}
-          alt=""
-          width={140}
-          height={130}
-          priority={true}
-          className="mx-auto my-auto mb-2"
-        /> */}
         <div className="flex gap-5 items-end justify-center dark:text-[#7a7a7ae4]">
           <FaPeopleRoof size={35} className="animate-pulse" />
           <HiChatBubbleBottomCenterText size={80} className="animate-bounce" />

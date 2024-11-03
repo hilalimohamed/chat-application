@@ -11,7 +11,7 @@ import { isValid } from 'date-fns'
 import { enUS } from 'date-fns/locale'
 import LastMessageInfo from './LastMessageInfo'
 
-export default function TheConversation({
+export default function TheConversationMobile({
   conversations,
 }: {
   conversations: any

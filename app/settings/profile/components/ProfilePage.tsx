@@ -8,7 +8,7 @@ export default function ProfilePage({ user }: { user: any }) {
       <div className="h-36 w-36 overflow-hidden rounded-full border-2 border-sky-500 absolute -top-16 dark:border-white">
         <ImagePage user={user} />
       </div>
-      <div className="pt-20 flex gap-10">
+      <div className="pt-20 flex lg:flex-row flex-col gap-10">
         <UpdateName user={user} />
         <UpdateAbout user={user} />
       </div>

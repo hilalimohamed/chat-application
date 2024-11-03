@@ -43,7 +43,7 @@ const VerifyEmailForm = () => {
   }, [])
 
   return (
-    <div className='flex h-screen justify-center items-center mx-28'>
+    <div className='lg:flex lg:h-screen lg:justify-center lg:items-center lg:mx-28 mx-3 h-screen flex justify-center items-center'>
       <CardWrapper
         headerLabel="Confirming your email address"
         title="Confirming now..."

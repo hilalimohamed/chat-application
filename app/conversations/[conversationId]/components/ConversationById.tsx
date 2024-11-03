@@ -10,7 +10,6 @@ export default function ConversationById({
 }: {
   conversationId: any
 }) {
-  // console.log('conversation >> / :  ', conversationId[0],'  !user :    ',convUser[0].name)
   const convUser = useConvUser(conversationId[0])
   return (
     <div className="relative z-30 flex items-center gap-5 px-3 py-4 border-b-2 border-gray-100 w-full border-l bg-white dark:bg-[#1F1F1F] dark:border-gray-600 dark:border-opacity-10">

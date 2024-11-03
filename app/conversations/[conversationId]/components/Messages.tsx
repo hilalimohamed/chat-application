@@ -54,9 +54,9 @@ const Messages = ({ allMessages }: { allMessages: any }) => {
         ) : (
           <NoMessages />
         )}
-        <div className="pt-24" ref={bottomRef} />
+        <div className="pt-7" ref={bottomRef} />
       </div>
-      <div className="pt-11" />
+      {/* <div className="pt-11" /> */}
     </div>
   )
 }

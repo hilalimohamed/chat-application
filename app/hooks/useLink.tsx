@@ -8,7 +8,6 @@ import { MdLogout } from 'react-icons/md'
 import useConversation from './useConversation'
 import { AiOutlineSetting } from 'react-icons/ai'
 
-
 export default function useLink() {
   const pathname = usePathname()
   const { conversationId } = useConversation()
@@ -36,7 +35,7 @@ export default function useLink() {
       {
         label: 'Settings',
         link: '/settings',
-        active: pathname === '/settings',
+        active: pathname.startsWith('/settings'),
         icon: AiOutlineSetting,
       },
       {

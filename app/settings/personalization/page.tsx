@@ -1,9 +1,12 @@
-import ThemePage from './components/ThemePage'
+import React from 'react'
 
-export default function page() {
+import ThemePage from './components/ThemePage'
+import BackToSettingsButton from '../components/BackToSettingsButton'
+
+export default function Page() {
   return (
     <div className="lg:pl-80 dark:bg-[#282828]">
-      {/* <div className="dark:text-white">Personalization</div> */}
+      <BackToSettingsButton />
       <ThemePage />
     </div>
   )
